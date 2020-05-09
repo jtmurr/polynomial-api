@@ -1,17 +1,14 @@
-from flask import Flask, jsonify
-from polymath import Polymath
+from flask import Flask
+from flask_restful import Api
+
+from resources.integration import IntegrationV1, IntegrationV2
 
 app = Flask(__name__)
-app.config['TESTING'] = True
+app.config['PROPAGATE_EXCEPTIONS'] = True
+api_v1 = Api(app, prefix='/api/polynomial')
 
-@app.route('/integrate/<a>/<b>/', methods=['GET'])
-def get_integral(a, b):
-    pm = Polymath()
-    y, err = pm.integrate(float(a), float(b))
-    return jsonify({
-        'y': y,
-        'err': err
-    })
+api_v1.add_resource(IntegrationV1, '/v1/integrate/<a>/<b>')
+api_v1.add_resource(IntegrationV2, '/v2/integrate/<a>/<b>')
 
-
-app.run(port=3000)
+if __name__ == '__main__':
+    app.run(port=5000, debug=True)

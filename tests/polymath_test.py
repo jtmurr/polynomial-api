@@ -1,4 +1,5 @@
-import unittest, math
+import math
+import unittest
 
 from polymath import Polymath
 

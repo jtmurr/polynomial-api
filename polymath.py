@@ -2,8 +2,10 @@ from scipy.integrate import quad
 
 
 class Polymath:
-    def integrand(self, x):
+    @classmethod
+    def integrand(cls, x):
         return 4 * x ** 2 - 1
 
-    def integrate(self, a, b):
-        return quad(self.integrand, a, b)
+    @classmethod
+    def integrate(cls, a, b):
+        return quad(cls.integrand, a, b)
