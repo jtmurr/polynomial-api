@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 
 from models.integration import IntegrationModelV1, IntegrationModelV2
 from resources.integration import IntegrationV1, IntegrationV2
@@ -8,12 +9,14 @@ v2 = IntegrationV2()
 
 
 class IntegrateTest(unittest.TestCase):
-    def test_get_v1(self):
-        actual = v1.get(0, 1)
+    @patch.object(IntegrationModelV1, 'json')
+    def test_get_v1(self, mock_json):
+        v1.get(0, 1)
 
-        self.assertIs(type(actual), IntegrationModelV1)
+        self.assertTrue(mock_json.called)
 
-    def test_get_v2(self):
-        actual = v2.get(0, 1)
+    @patch.object(IntegrationModelV2, 'json')
+    def test_get_v2(self, mock_json):
+        v2.get(0, 1)
 
-        self.assertIs(type(actual), IntegrationModelV2)
+        self.assertTrue(mock_json.called)

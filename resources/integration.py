@@ -11,10 +11,10 @@ def integrate(a, b):
 class IntegrationV1(Resource):
     def get(self, a, b):
         y, err = integrate(a, b)
-        return IntegrationModelV1(y, err)
+        return IntegrationModelV1(y, err).json()
 
 
 class IntegrationV2(Resource):
     def get(self, a, b):
         y, err = integrate(a, b)
-        return IntegrationModelV2(y, err)
+        return IntegrationModelV2(y, err).json()
