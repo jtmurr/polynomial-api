@@ -1,5 +1,6 @@
 from flask_restful import Resource
 
+from models.integration import IntegrationModelV1, IntegrationModelV2
 from polymath import Polymath
 
 
@@ -10,18 +11,10 @@ def integrate(a, b):
 class IntegrationV1(Resource):
     def get(self, a, b):
         y, err = integrate(a, b)
-        return {
-            'ans': {
-                'y': y,
-                'err': err
-            }
-        }
+        return IntegrationModelV1(y, err)
 
 
 class IntegrationV2(Resource):
     def get(self, a, b):
         y, err = integrate(a, b)
-        return {
-            'y': y,
-            'err': err
-        }
+        return IntegrationModelV2(y, err)
