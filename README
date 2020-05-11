@@ -5,3 +5,13 @@ http://127.0.0.1:5000/api/polynomial/v2/integrate/0/1
 Get stored answers
 http://127.0.0.1:5000/api/polynomial/v1/answers
 http://127.0.0.1:5000/api/polynomial/v1/answer/0/1
+
+Answers stored in sqlite3 database ./answers.db
+CREATE TABLE ANSWER
+(
+    ID    INTEGER PRIMARY KEY AUTOINCREMENT,
+    LOWER REAL,
+    UPPER REAL,
+    Y     REAL,
+    ERR   REAL
+);
