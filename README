@@ -1,3 +1,7 @@
 Contrived versioning
 http://127.0.0.1:5000/api/polynomial/v1/integrate/0/1
 http://127.0.0.1:5000/api/polynomial/v2/integrate/0/1
+
+Get stored answers
+http://127.0.0.1:5000/api/polynomial/v1/answers
+http://127.0.0.1:5000/api/polynomial/v1/answer/0/1
